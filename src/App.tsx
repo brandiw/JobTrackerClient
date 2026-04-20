@@ -1,24 +1,22 @@
-import { useEffect, useState } from 'react'
-// import reactLogo from './assets/react.svg'
-import { STRINGS } from '../constants/strings'
+import { Routes, Route } from 'react-router-dom'
+import { Home } from './pages/Home'
+import { Dashboard } from './pages/Dashboard'
+import { Companies } from './pages/Companies'
+import { Applications } from './pages/Applications'
+import { ApplicationDetail } from './pages/ApplicationDetail'
 import './App.css'
 
 function App() {
-  const [companies, setCompanies] = useState([])
-
-  useEffect(() => {
-    fetch('/api/companies')
-      .then(res => res.json())
-      .then(data => setCompanies(data))
-  }, [])
 
   return (
     <>
-      <div>
-        <h1>{STRINGS.appTitle}</h1>
-        <p>Frontend is running.</p>
-        <pre>{JSON.stringify(companies, null, 2)}</pre>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/companies" element={<Companies />} />
+        <Route path="/applications/:companyId" element={<Applications />} />
+        <Route path="/application/:applicationId" element={<ApplicationDetail />} />
+      </Routes>
     </>
   )
 }

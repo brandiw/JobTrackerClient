@@ -4,4 +4,6 @@ export const STRINGS = {
   save: 'Save',
   cancel: 'Cancel',
   noApplications: 'No job applications yet.',
+  seeNotes: 'See notes',
+  seeApplications: 'See Applications',
 } as const;
