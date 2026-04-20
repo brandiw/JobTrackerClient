@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { STRINGS } from '../../constants/strings'
+import '../components/shared.css'
 
 interface Company {
   id: number
@@ -42,47 +43,33 @@ export function Applications() {
       </nav>
       <button
         onClick={() => navigate('/companies')}
-        style={{
-          padding: '8px 16px',
-          marginBottom: '20px',
-          backgroundColor: '#6c757d',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer',
-        }}
+        className="btn btn-secondary"
+        style={{ marginBottom: '20px' }}
       >
         Back to Companies
       </button>
       {company?.applications.length === 0 ? (
         <p>No applications found for this company.</p>
       ) : (
-        <table style={{ borderCollapse: 'collapse', width: '100%', marginTop: '20px' }}>
+        <table className="data-table">
           <thead>
-            <tr style={{ borderBottom: '2px solid #ccc' }}>
-              <th style={{ padding: '10px' }}>Job Title</th>
-              <th style={{ padding: '10px' }}>Status</th>
-              <th style={{ padding: '10px' }}>Date Applied</th>
-              <th style={{ padding: '10px' }}>Notes</th>
+            <tr>
+              <th>Job Title</th>
+              <th>Status</th>
+              <th>Date Applied</th>
+              <th>Notes</th>
             </tr>
           </thead>
           <tbody>
             {company?.applications.map((application: any) => (
-              <tr key={application.id} style={{ borderBottom: '1px solid #eee' }}>
-                <td style={{ padding: '10px' }}>{application.title}</td>
-                <td style={{ padding: '10px' }}>{application.status}</td>
-                <td style={{ padding: '10px' }}>{application.dateApplied}</td>
-                <td style={{ padding: '10px' }}>
+              <tr key={application.id}>
+                <td>{application.title}</td>
+                <td>{application.status}</td>
+                <td>{application.dateApplied}</td>
+                <td>
                   <button
                     onClick={() => navigate(`/application/${application.id}`)}
-                    style={{
-                      padding: '8px 16px',
-                      backgroundColor: '#007bff',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '4px',
-                      cursor: 'pointer',
-                    }}
+                    className="btn btn-primary"
                   >
                     {STRINGS.seeNotes}
                   </button>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { STRINGS } from '../../constants/strings'
+import '../components/shared.css'
 
 export function Companies() {
   const [companies, setCompanies] = useState([])
@@ -20,38 +21,31 @@ export function Companies() {
       <nav>
         <Link to="/">Home</Link> | <Link to="/dashboard">Dashboard</Link>
       </nav>
-      <table style={{ borderCollapse: 'collapse', width: '100%', marginTop: '20px' }}>
+      <table className="data-table">
         <thead>
-          <tr style={{ borderBottom: '2px solid #ccc' }}>
-            <th style={{ padding: '10px' }}>Name</th>
-            <th style={{ padding: '10px' }}>Location</th>
-            <th style={{ padding: '10px' }}>Applications</th>
+          <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Applications</th>
           </tr>
         </thead>
         <tbody>
           {companies.map((company: any) => (
-            <tr key={company.id} style={{ borderBottom: '1px solid #eee' }}>
-              <td style={{ padding: '10px' }}>
+            <tr key={company.id}>
+              <td>
                 <a href={company.website} target="_blank" rel="noopener noreferrer">
                   {company.name}
                 </a>
               </td>
-              <td style={{ padding: '10px' }}>
+              <td>
                 {company.locationCity && company.locationState
                   ? `${company.locationCity}, ${company.locationState}`
                   : company.locationCity || company.locationState || 'N/A'}
               </td>
-              <td style={{ padding: '10px' }}>
+              <td>
                 <button
                   onClick={() => navigate(`/applications/${company.id}`)}
-                  style={{
-                    padding: '8px 16px',
-                    backgroundColor: '#007bff',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '4px',
-                    cursor: 'pointer',
-                  }}
+                  className="btn btn-primary"
                 >
                   {STRINGS.seeApplications}
                 </button>

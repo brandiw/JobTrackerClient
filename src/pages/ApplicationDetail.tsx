@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
+import '../components/shared.css'
 
 interface ApplicationDetail {
   id: number
@@ -31,15 +32,8 @@ export function ApplicationDetail() {
       </nav>
       <button
         onClick={() => navigate(-1)}
-        style={{
-          padding: '8px 16px',
-          marginBottom: '20px',
-          backgroundColor: '#6c757d',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          cursor: 'pointer',
-        }}
+        className="btn btn-secondary"
+        style={{ marginBottom: '20px' }}
       >
         Back
       </button>
