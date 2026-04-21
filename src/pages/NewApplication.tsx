@@ -52,14 +52,6 @@ const roleTypeMap: Record<string, number> = {
   'Onsite': 3,
 };
 
-const reverseStatusMap: Record<number, string> = Object.fromEntries(
-  Object.entries(statusMap).map(([k, v]) => [v, k])
-);
-
-const reverseRoleTypeMap: Record<number, string> = Object.fromEntries(
-  Object.entries(roleTypeMap).map(([k, v]) => [v, k])
-);
-
 export function NewApplication() {
   const { companyId } = useParams();
   const navigate = useNavigate();
@@ -84,14 +76,6 @@ export function NewApplication() {
         [field]: event.target.value,
       }));
     };
-
-//   const getStatusLabel = (statusNum: number): string => {
-//     return reverseStatusMap[statusNum] || 'Applied';
-//   };
-
-//   const getRoleTypeLabel = (roleTypeNum: number): string => {
-//     return reverseRoleTypeMap[roleTypeNum] || 'Remote';
-//   };
 
   const handleSubmit = async (
     event: SyntheticEvent<HTMLFormElement, SubmitEvent>
