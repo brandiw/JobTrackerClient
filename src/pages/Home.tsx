@@ -50,7 +50,7 @@ export default function Home(): JSX.Element {
               <CardContent>
                 <Stack spacing={2}>
                   <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
-                    <BusinessOutlinedIcon color="primary" />
+                    <BusinessOutlinedIcon sx={{ color: '#b0e0e6' }} />
                     <Typography variant="h6" sx={{ fontWeight: 600 }}>
                       {STRINGS.manageCompanies}
                     </Typography>
@@ -73,7 +73,7 @@ export default function Home(): JSX.Element {
               <CardContent>
                 <Stack spacing={2}>
                   <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
-                    <WorkIcon color="primary" />
+                    <WorkIcon sx={{ color: '#b0e0e6' }} />
                     <Typography variant="h6" sx={{ fontWeight: 600 }}>
                       {STRINGS.trackApplications}
                     </Typography>
@@ -96,7 +96,7 @@ export default function Home(): JSX.Element {
               <CardContent>
                 <Stack spacing={2}>
                   <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
-                    <NoteAltOutlinedIcon color="primary" />
+                    <NoteAltOutlinedIcon sx={{ color: '#b0e0e6' }} />
                     <Typography variant="h6" sx={{ fontWeight: 600 }}>
                       {STRINGS.saveInterviewNotes}
                     </Typography>
@@ -125,7 +125,7 @@ export default function Home(): JSX.Element {
           <CardContent>
             <Stack spacing={2}>
               <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
-                <HomeWorkOutlinedIcon color="primary" />
+                <HomeWorkOutlinedIcon sx={{ color: '#b0e0e6' }} />
                 <Typography variant="h5" sx={{ fontWeight: 600 }}>
                   {STRINGS.buildMomentum}
                 </Typography>

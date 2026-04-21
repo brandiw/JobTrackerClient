@@ -1,6 +1,7 @@
 // src/constants/strings.ts
 export const STRINGS = {
   appTitle: 'Brandi\'s Job Tracker',
+  loading: 'Loading...',
   save: 'Save',
   cancel: 'Cancel',
   noApplications: 'No job applications yet.',
@@ -11,6 +12,7 @@ export const STRINGS = {
   homeBlurb2: 'Use this app to keep track of where you applied, what stage each opportunity is in, and the notes you want to remember before your next interview.',
   manageCompanies: 'Manage Companies',
   trackApplications: 'Track Applications',
+  notesTitle: 'Interview Notes',
   saveInterviewNotes: 'Save Interview Notes',
   buildMomentum: 'Build Momentum',
   buildMomentumBlurb: 'A consistent system makes it easier to follow up, prepare for interviews, and spot where your search is gaining traction.',
