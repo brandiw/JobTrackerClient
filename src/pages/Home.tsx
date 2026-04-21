@@ -16,6 +16,8 @@ import WorkIcon from '@mui/icons-material/Work';
 import NoteAltOutlinedIcon from '@mui/icons-material/NoteAltOutlined';
 import { Link as RouterLink } from 'react-router-dom';
 import { STRINGS } from '../../constants/strings'
+import heroImage from '../assets/hero.png'
+import buildMomentumImage from '../assets/homepage_build_momentum.png'
 import type { JSX } from 'react';
 
 export default function Home(): JSX.Element {
@@ -31,6 +33,20 @@ export default function Home(): JSX.Element {
             { STRINGS.homeBlurb }
           </Typography>
         </Box>
+        <Box sx={{ mb: 2 }}>
+          <img 
+            src={heroImage} 
+            alt="Job Tracker Hero" 
+            style={{ 
+              width: '100%', 
+              height: 'auto', 
+              borderRadius: '8px',
+              display: 'block'
+            }} 
+          />
+        </Box>
+
+        
 
         <Card elevation={0} sx={{ border: '1px solid', borderColor: '#b0e0e6' }}>
           <CardContent>
@@ -114,6 +130,19 @@ export default function Home(): JSX.Element {
             </Card>
           </Grid>
         </Grid>
+
+        <Box sx={{ mb: 2 }}>
+          <img 
+            src={buildMomentumImage} 
+            alt="Build Momentum" 
+            style={{ 
+              width: '100%', 
+              height: 'auto', 
+              borderRadius: '8px',
+              display: 'block'
+            }} 
+          />
+        </Box>
 
         <Card
           sx={{
