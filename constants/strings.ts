@@ -19,4 +19,5 @@ export const STRINGS = {
   manageCompaniesBlurb: 'Store company details and keep your opportunities grouped in a way that is easy to review later.',
   trackApplicationsBlurb: 'Follow each application through your hiring pipeline, from applied to offer, rejection, or closeout.',
   saveInterviewNotesBlurb: 'Capture reminders, feedback, and next steps so you can prepare better for every conversation.',
+  noApplicationsFound: 'No applications found.',
 } as const;

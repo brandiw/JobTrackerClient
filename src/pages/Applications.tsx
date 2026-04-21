@@ -37,17 +37,6 @@ export function Applications() {
   return (
     <div>
       <h1>Applications for {company?.name}</h1>
-      <pre>{JSON.stringify(company, null, 2)}</pre>
-      <nav>
-        <Link to="/">Home</Link> | <Link to="/dashboard">Dashboard</Link> | <Link to="/companies">Companies</Link>
-      </nav>
-      <button
-        onClick={() => navigate('/companies')}
-        className="btn btn-secondary"
-        style={{ marginBottom: '20px' }}
-      >
-        Back to Companies
-      </button>
       {company?.applications.length === 0 ? (
         <p>No applications found for this company.</p>
       ) : (

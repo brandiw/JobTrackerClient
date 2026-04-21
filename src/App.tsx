@@ -3,6 +3,7 @@ import { Box, Container } from '@mui/material';
 import Home from './pages/Home'
 import { Dashboard } from './pages/Dashboard'
 import { Companies } from './pages/Companies'
+import { AllApplications } from './pages/AllApplications';
 import { Applications } from './pages/Applications'
 import { ApplicationDetail } from './pages/ApplicationDetail'
 import { NewInterviewNote } from './pages/NewInterviewNote';
@@ -23,6 +24,7 @@ function App() {
             <Route path="/applications/:companyId" element={<Applications />} />
             <Route path="/application/:applicationId" element={<ApplicationDetail />} />
             <Route path="/applications/:applicationId/notes/new" element={<NewInterviewNote />} />
+            <Route path="/applications" element={<AllApplications />} />
           </Routes>
         </Box>
       </Container>
