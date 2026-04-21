@@ -113,7 +113,7 @@ export function AllApplications() {
                   <TableCell>
                     <Link
                       component={RouterLink}
-                      to={`/applications/${application.id}`}
+                      to={`/application/${application.id}`}
                       underline="hover"
                     >
                       {application.title}

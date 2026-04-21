@@ -11,7 +11,6 @@ interface Company {
   website: string
   locationCity: string
   locationState: string
-  roleType: string
   applications: Application[]
 }
 
@@ -19,7 +18,9 @@ interface Application {
   id: number
   title: string
   status: string
-  dateApplied: string
+  roleType: string
+  url: string | null
+  dateApplied: Date
 }
 
 export function Applications() {
@@ -65,7 +66,7 @@ export function Applications() {
               <tr key={application.id}>
                 <td>{application.title}</td>
                 <td>{application.status}</td>
-                <td>{application.dateApplied}</td>
+                <td>{new Date(application.dateApplied).toISOString().split('T')[0]}</td>
                 <td>
                   <button
                     onClick={() => navigate(`/application/${application.id}`)}

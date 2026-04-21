@@ -85,13 +85,13 @@ export function NewApplication() {
       }));
     };
 
-  const getStatusLabel = (statusNum: number): string => {
-    return reverseStatusMap[statusNum] || 'Applied';
-  };
+//   const getStatusLabel = (statusNum: number): string => {
+//     return reverseStatusMap[statusNum] || 'Applied';
+//   };
 
-  const getRoleTypeLabel = (roleTypeNum: number): string => {
-    return reverseRoleTypeMap[roleTypeNum] || 'Remote';
-  };
+//   const getRoleTypeLabel = (roleTypeNum: number): string => {
+//     return reverseRoleTypeMap[roleTypeNum] || 'Remote';
+//   };
 
   const handleSubmit = async (
     event: SyntheticEvent<HTMLFormElement, SubmitEvent>

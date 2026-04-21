@@ -31,9 +31,11 @@ interface InterviewNote {
 interface ApplicationDetail {
   id: number;
   title: string;
-  company: string;
+  companyId: string;
   status: string;
   dateApplied: string;
+  roleType: string;
+  url: string | null;
   notes: InterviewNote[];
 }
 
@@ -42,6 +44,14 @@ export function ApplicationDetail() {
   const [application, setApplication] = useState<ApplicationDetail | null>(null);
   const [noteToDelete, setNoteToDelete] = useState<number | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
+
+  const formatDate = (dateString: string): string => {
+    // Handle format like "2026-04-15 01:00:00-07"
+    // Extract just the date portion (YYYY-MM-DD)
+    const datePart = dateString.split(' ')[0];
+    const date = new Date(datePart);
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  };
 
   useEffect(() => {
     if (!applicationId) return;
@@ -107,13 +117,19 @@ export function ApplicationDetail() {
           <Card>
             <CardContent>
               <Typography variant="body1">
-                <strong>Company:</strong> {application.company}
+                <strong>Company:</strong> {application.companyId}
               </Typography>
               <Typography variant="body1">
                 <strong>Status:</strong> {application.status}
               </Typography>
               <Typography variant="body1">
-                <strong>Date Applied:</strong> {application.dateApplied}
+                <strong>Role Type:</strong> {application.roleType}
+              </Typography>
+              <Typography variant="body1">
+                <strong>Date Applied:</strong> {application.dateApplied ? formatDate(application.dateApplied) : 'N/A'}
+              </Typography>
+              <Typography variant="body1">
+                <strong>URL:</strong> <a href={application.url || '—'} target="_blank" rel="noopener noreferrer">View Job Posting</a>
               </Typography>
             </CardContent>
           </Card>
@@ -127,7 +143,7 @@ export function ApplicationDetail() {
               {STRINGS.notesTitle}
             </Typography>
 
-            {application.notes.map((noteItem) => (
+            {application.notes.length == 0 ? "No notes available." : application.notes.map((noteItem) => (
               <Card
                 key={noteItem.id}
                 sx={{
