@@ -5,6 +5,11 @@ import {
   Card,
   CardContent,
   Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   Divider,
   IconButton,
   Stack,
@@ -35,6 +40,8 @@ interface ApplicationDetail {
 export function ApplicationDetail() {
   const { applicationId } = useParams();
   const [application, setApplication] = useState<ApplicationDetail | null>(null);
+  const [noteToDelete, setNoteToDelete] = useState<number | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     if (!applicationId) return;
@@ -43,6 +50,36 @@ export function ApplicationDetail() {
       .then((res) => res.json())
       .then((data) => setApplication(data));
   }, [applicationId]);
+
+  const handleDeleteNote = async () => {
+    if (!applicationId || noteToDelete === null || !application) return;
+
+    setIsDeleting(true);
+
+    try {
+      const response = await fetch(
+        `/api/applications/${applicationId}/notes/${noteToDelete}`,
+        {
+          method: 'DELETE',
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error('Failed to delete note.');
+      }
+
+      setApplication({
+        ...application,
+        notes: application.notes.filter((note) => note.id !== noteToDelete),
+      });
+
+      setNoteToDelete(null);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsDeleting(false);
+    }
+  };
 
   return (
     <Container sx={{ py: 4 }}>
@@ -54,11 +91,6 @@ export function ApplicationDetail() {
       >
         {application?.title ?? 'Application Details'}
       </Typography>
-
-      <nav style={{ marginBottom: '16px' }}>
-        <Link to="/">Home</Link> | <Link to="/dashboard">Dashboard</Link> |{' '}
-        <Link to="/companies">Companies</Link>
-      </nav>
 
       <Button
         component={Link}
@@ -126,7 +158,11 @@ export function ApplicationDetail() {
                         <IconButton aria-label="edit note" color="primary">
                           <EditIcon />
                         </IconButton>
-                        <IconButton aria-label="delete note" color="error">
+                        <IconButton
+                          aria-label="delete note"
+                          color="error"
+                          onClick={() => setNoteToDelete(noteItem.id)}
+                        >
                           <DeleteIcon />
                         </IconButton>
                       </Stack>
@@ -149,6 +185,37 @@ export function ApplicationDetail() {
       ) : (
         <Typography>{STRINGS.loading}</Typography>
       )}
+      <Dialog
+  open={noteToDelete !== null}
+  onClose={() => {
+    if (!isDeleting) {
+      setNoteToDelete(null);
+    }
+  }}
+>
+  <DialogTitle>Delete Interview Note</DialogTitle>
+    <DialogContent>
+      <DialogContentText>
+        Are you sure you want to delete this note? This action cannot be undone.
+      </DialogContentText>
+    </DialogContent>
+    <DialogActions>
+      <Button
+        onClick={() => setNoteToDelete(null)}
+        disabled={isDeleting}
+      >
+        Cancel
+      </Button>
+      <Button
+        onClick={handleDeleteNote}
+        color="error"
+        variant="contained"
+        disabled={isDeleting}
+      >
+        {isDeleting ? 'Deleting...' : 'Delete'}
+      </Button>
+    </DialogActions>
+  </Dialog>
     </Container>
   );
 }
