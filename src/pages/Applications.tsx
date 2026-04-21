@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
+import AddIcon from '@mui/icons-material/Add';
+import { Button } from '@mui/material';
 import { STRINGS } from '../../constants/strings'
 import '../components/shared.css'
 
@@ -37,6 +39,15 @@ export function Applications() {
   return (
     <div>
       <h1>Applications for {company?.name}</h1>
+      <Button
+        component={Link}
+        to={`/applications/${companyId}/new`}
+        variant="contained"
+        startIcon={<AddIcon />}
+        sx={{ mb: 3 }}
+    >
+        Add New Application
+    </Button>
       {company?.applications.length === 0 ? (
         <p>No applications found for this company.</p>
       ) : (

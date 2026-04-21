@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import AddIcon from '@mui/icons-material/Add';
+import { Button } from '@mui/material';
+import { Link } from 'react-router-dom'
 import { STRINGS } from '../../constants/strings'
 import '../components/shared.css'
 
@@ -76,7 +79,15 @@ export function Companies() {
   return (
     <div>
       <h1>Companies</h1>
-      <p>Manage your target companies</p>
+      <Button
+        component={Link}
+        to={`/companies/new`}
+        variant="contained"
+        startIcon={<AddIcon />}
+        sx={{ mb: 3 }}
+      >
+        Add New Company
+      </Button>
 
       <table className="data-table">
         <thead>

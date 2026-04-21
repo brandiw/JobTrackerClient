@@ -6,7 +6,9 @@ import { Companies } from './pages/Companies'
 import { AllApplications } from './pages/AllApplications';
 import { Applications } from './pages/Applications'
 import { ApplicationDetail } from './pages/ApplicationDetail'
+import { NewApplication } from './pages/NewApplication';
 import { NewInterviewNote } from './pages/NewInterviewNote';
+import { NewCompany } from './pages/NewCompany';
 import Header from './components/Header';
 import './App.css'
 
@@ -21,10 +23,12 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/companies" element={<Companies />} />
+            <Route path="/companies/new" element={<NewCompany />} />
             <Route path="/applications/:companyId" element={<Applications />} />
             <Route path="/application/:applicationId" element={<ApplicationDetail />} />
             <Route path="/applications/:applicationId/notes/new" element={<NewInterviewNote />} />
             <Route path="/applications" element={<AllApplications />} />
+            <Route path="/applications/:companyId/new" element={<NewApplication />} />
           </Routes>
         </Box>
       </Container>

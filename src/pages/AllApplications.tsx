@@ -126,7 +126,7 @@ export function AllApplications() {
                       to={`/companies/${application.companyId}`}
                       underline="hover"
                     >
-                      {application.companyName}
+                      {application.companyId}
                     </Link>
                   </TableCell>
 
