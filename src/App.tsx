@@ -5,6 +5,7 @@ import { Dashboard } from './pages/Dashboard'
 import { Companies } from './pages/Companies'
 import { Applications } from './pages/Applications'
 import { ApplicationDetail } from './pages/ApplicationDetail'
+import { NewInterviewNote } from './pages/NewInterviewNote';
 import Header from './components/Header';
 import './App.css'
 
@@ -21,6 +22,7 @@ function App() {
             <Route path="/companies" element={<Companies />} />
             <Route path="/applications/:companyId" element={<Applications />} />
             <Route path="/application/:applicationId" element={<ApplicationDetail />} />
+            <Route path="/applications/:applicationId/notes/new" element={<NewInterviewNote />} />
           </Routes>
         </Box>
       </Container>
